@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://localhost/api'
+  apiBaseUrl: 'https://robotsstore-api.herokuapp.com/api'
 };

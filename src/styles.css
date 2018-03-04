@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+.help-block {
+  font-size: 12px;
+}
+
+.navbar {
+  font-size: 2em;
+}

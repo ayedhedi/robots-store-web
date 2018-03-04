@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 
 import { Robot } from "../domain/robot";
 import { environment } from "../../../environments/environment";
@@ -14,7 +15,9 @@ export class ApiService {
 
   getAllRobots(): Observable<Array<Robot>>{
     let url = API_BASE_URL + '/robots';
-    return this.http.get<Array<Robot>>(url);
+    console.log("api: get robots");
+    return new EmptyObservable();
+    //return this.http.get<Array<Robot>>(url);
   }
 
 }

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
                       username: this.model.username,
                       token: token
                     };
-                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('currentUser', JSON.stringify(user));
                     this.router.navigate([this.returnUrl]);
                   }else {
                     this.alertService.error("Invalid login response: please contact support team");

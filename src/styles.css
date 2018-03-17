@@ -23,3 +23,13 @@ a {
 .navbar {
   font-size: 2em;
 }
+
+.search-results {
+  height: 100%;
+  overflow: scroll;
+}
+
+.robot-description {
+  text-align: justify;
+  text-justify: inter-word;
+}

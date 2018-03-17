@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 
-import { Robot } from "../domain/robot";
-import { environment } from "../../../environments/environment";
+import "rxjs/add/operator/do";
+import "rxjs/add/operator/map";
+import * as _ from "lodash";
+
+import {Robot} from "../domain/robot";
+import {Page} from "../domain/page";
+import {environment} from "../../../environments/environment";
 
 const API_BASE_URL = environment.apiBaseUrl;
 
@@ -13,11 +16,17 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllRobots(): Observable<Array<Robot>>{
-    let url = API_BASE_URL + '/robots';
-    console.log("api: get robots");
-    return new EmptyObservable();
-    //return this.http.get<Array<Robot>>(url);
+  getAllRobots() {
+    let url = API_BASE_URL + 'api/robots';
+
+    return this.http.get<Robot[]>(url)
+      .map(data => _.values(data));
+  }
+
+  getPageRobot(page: number, size: number){
+    let url = API_BASE_URL + `api/robots/pageable?page=${page}&size=${size}`;
+
+    return this.http.get<Page>(url);
   }
 
 }

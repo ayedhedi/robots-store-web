@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-4" style="text-align: center">
+    <img [src]="imagePath()" style="width: 60%">
+  </div>
+  <div class="col-8">
+    {{robot.description}}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h4>Robot details</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="alert alert-secondary" role="alert">
+      <table class="table table-light">
+        <tbody>
+          <tr>
+            <td width="40%"><h5>Category</h5></td>
+            <td><h5><span class="badge badge-primary">{{robot.category}}</span></h5></td>
+          </tr>
+          <tr>
+            <td><h5>Brand</h5></td>
+            <td>{{robot.brand}}</td>
+          </tr>
+          <tr>
+            <td><h5>Product Code</h5></td>
+            <td>{{robot.code}}</td>
+          </tr>
+          <tr>
+            <td><h5>Price</h5></td>
+            <td><h5><span class="badge badge-warning">{{robot.price}} $</span></h5></td>
+          </tr>
+          <tr>
+            <td><h5>Available Quantity</h5></td>
+            <td>{{robot.quantity > 0 ? robot.quantity : 'Available soon'}}</td>
+          </tr>
+          <tr>
+            <td><h5>Functions</h5></td>
+            <td>
+              <h5 *ngFor="let function of robot.functions">
+                <span class="badge badge-success">{{function}}</span>
+              </h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

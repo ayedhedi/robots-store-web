@@ -1,0 +1,56 @@
+<div class="card" style="width: 35rem;">
+  <!-- Header -->
+  <div class="card-header">
+    <div class="row justify-content-between">
+      <div class="col">
+        <h4>
+          <span>
+            <i class="fa fa-star"></i>
+          </span>
+        </h4>
+      </div>
+      <div class="col" style="text-align: right">
+        <h4><span class="badge badge-pill"
+                  [ngClass]="{'badge-warning': robot.quantity > 0,
+                              'badge-default': robot.quantity == 0}">{{robot.price}}$</span></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div style="text-align: center">
+    <img class="card-img-top" [src]="imagePath()" style="width: 70%">
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{robot.name}}</h4>
+    <p class="card-text robot-description">
+      {{robot.description}}
+    </p>
+  </div>
+
+
+  <!-- Footer -->
+  <div class="card-footer">
+    <div class="row justify-content-between">
+      <div class="col">
+        <button class="btn btn-primary" (click)="view(content)">See details</button>
+      </div>
+      <div class="col" style="text-align: right">
+        <button class="btn btn-primary" [disabled]="robot.quantity == 0">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{robot.name}}</h4>
+  </div>
+  <div class="modal-body">
+    <robot-detail [robot]="robot"></robot-detail>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

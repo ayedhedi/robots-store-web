@@ -24,8 +24,7 @@ export class RobotComponent implements OnInit {
               private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.admin = this.authService.getCurrentUser() &&
-                  this.authService.getCurrentUser().admin;
+    this.admin = this.authService.isAdmin();
   }
 
   view(content) {

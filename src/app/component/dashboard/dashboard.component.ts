@@ -31,8 +31,7 @@ export class DashboardComponent implements OnInit {
       this.selectedCode = this.selectedRobot.code;
       this.codes = this.robots.map(r => r.code);
     });
-    this.admin = this.authenticationService.getCurrentUser() &&
-      this.authenticationService.getCurrentUser().admin;
+    this.admin = this.authenticationService.isAdmin();
   }
 
   onSearchChange(searchValue : string ) {

@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
                       token: token,
                       admin: roles.indexOf("ROLE_ADMIN") >= 0
                     };
-                    this.authenticationService.setUser(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.router.navigate([this.returnUrl]);
                   }else {

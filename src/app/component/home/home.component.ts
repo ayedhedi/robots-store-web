@@ -7,7 +7,8 @@ import {Page} from "../../shared/domain/page";
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+  styleUrls: ['home.component.css']
 })
 
 export class HomeComponent implements OnInit {
@@ -22,10 +23,10 @@ export class HomeComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
+    console.log("init home");
     this.robots$ = [];
     this.nextPage();
-    this.admin = this.authenticationService.getCurrentUser() &&
-      this.authenticationService.getCurrentUser().admin;
+    this.admin = this.authenticationService.isAdmin();
   }
 
   nextPage() {

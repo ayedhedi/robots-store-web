@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 
 import 'rxjs/add/operator/map'
@@ -10,8 +10,6 @@ const API_BASE_URL = environment.apiBaseUrl;
 @Injectable()
 export class AuthenticationService {
 
-    currentUser: User;
-
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
@@ -19,17 +17,13 @@ export class AuthenticationService {
       return this.http.post<any>(url, JSON.stringify({ username: username, password: password }), {observe: 'response'});
     }
 
-    setUser(user:User) {
-      this.currentUser = user;
-    }
-
-    getCurrentUser():User {
-      return this.currentUser;
+    isAdmin():boolean {
+      let user:User = JSON.parse(localStorage.getItem('currentUser'));
+      return user && user.admin;
     }
 
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-      this.currentUser = null;
     }
 }

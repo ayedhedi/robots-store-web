@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {ApiService} from "../../shared/service/api.service";
 import {Robot} from "../../shared/domain/robot";
 import {Page} from "../../shared/domain/page";
+import {environment} from "../../../environments/environment";
 
 @Component({
     moduleId: module.id,
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   admin: boolean;
   pageNum: number = 0;
   pageSize: number = 10;
+  isProduction: boolean = environment.production;
 
   constructor(private authenticationService: AuthenticationService,
               private api: ApiService,

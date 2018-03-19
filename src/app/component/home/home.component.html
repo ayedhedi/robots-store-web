@@ -23,18 +23,23 @@
 <div class="container">
   <!-- Jumbotron Header -->
   <header>
-    <div class="alert alert-danger header-alert" role="alert" *ngIf="isProduction">
-      <h4>
-        As the application is deployed on a free Heroku account, when it receives no traffic in a 30 minute period,
-        the web dyno will sleep. In addition to the web dyno sleeping, the worker dyno (if present) will also sleep.
-        When the application is sleeping and receives a web traffic, it will become active again after a short delay.
-        So please wait before refresh the first time you get access to the application.
+    <div class="alert alert-warning alert-dismissible fade show header-alert" role="alert"  *ngIf="isProduction">
+      <h4>As the application is deployed on a free Heroku account, when it receives no traffic in a 30 minute period,
+      the web dyno will sleep. In addition to the web dyno sleeping, the worker dyno (if present) will also sleep.
+      When the application is sleeping and receives a web traffic, it will become active again after a short delay.
+      So please wait before refresh the first time you get access to the application.
       </h4>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-    <div class="alert alert-success header-alert" role="alert">
+    <div class="alert alert-success alert-dismissible fade show header-alert" role="alert">
       <h4>This WEB application is a POC that has been developed in order to answer to an RBC programming
         assignment related to the recruitment procedure. Data used in this application is totally generated
         randomly using a <a target="_blank" href="https://next.json-generator.com/">JSON generator</a></h4>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   </header>
 

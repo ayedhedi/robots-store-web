@@ -19,6 +19,7 @@ import { RobotDetailComponent } from './component/robot-detail/robot-detail.comp
 import { RobotUpdateComponent } from './component/robot-update/robot-update.component';
 import { ToolsService} from "./shared/service/tools.service";
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { RobotFormComponent } from './component/robot-form/robot-form.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     RobotComponent,
     RobotDetailComponent,
     RobotUpdateComponent,
-    DashboardComponent
+    DashboardComponent,
+    RobotFormComponent
   ],
   imports: [
     BrowserModule,

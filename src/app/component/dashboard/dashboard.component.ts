@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
   robots: Robot[];
   codes: string[];
+  newRobot: boolean = false;
   selectedCode: string;
   selectedRobot: Robot;
 
@@ -26,6 +27,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.apiService.getAllRobots().subscribe(robots => {
       this.robots = robots;
+      this.selectedRobot = this.robots[0];
+      this.selectedCode = this.selectedRobot.code;
       this.codes = this.robots.map(r => r.code);
     });
     this.admin = this.authenticationService.getCurrentUser() &&
@@ -39,7 +42,7 @@ export class DashboardComponent implements OnInit {
   selectCode(code) {
     this.selectedCode = code;
     this.selectedRobot = this.robots.find(r => r.code == code);
-    console.log(this.selectedRobot);
+    this.newRobot = false;
   }
 
   signout(){
@@ -47,5 +50,36 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  createRobot() {
+    this.newRobot = true;
+    this.selectedCode = null;
+    this.selectedRobot = {
+      id: null,
+      name: 'New robot',
+      category: 'DOG',
+      code: '',
+      brand: '',
+      description: '',
+      price: 0,
+      quantity: 0,
+      image: null,
+      available: true,
+      functions: []
+    }
+  }
+
+  save() {
+    if (this.newRobot) {
+      this.apiService.saveRobot(this.selectedRobot).subscribe((robot) => {
+        alert(`The robot ${this.selectedRobot.name} has been successfully created`);
+        this.robots.push(this.selectedRobot);
+        this.codes.push(this.selectedRobot.code);
+      })
+    }else {
+      this.apiService.updateRobot(this.selectedRobot).subscribe((robot) => {
+        alert(`The robot ${this.selectedRobot.code} has been successfully updated`);
+      });
+    }
+  }
 
 }

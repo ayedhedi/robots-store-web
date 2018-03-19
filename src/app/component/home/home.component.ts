@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   page$: Page;
   admin: boolean;
   pageNum: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 10;
 
   constructor(private authenticationService: AuthenticationService,
               private api: ApiService,
@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
       .subscribe(data => {
         this.page$ = data;
         this.robots$ = this.robots$.concat(this.page$.content);
-        console.log(this.page$.content.length);
       });
   }
 

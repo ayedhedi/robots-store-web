@@ -41,4 +41,9 @@ export class ApiService {
     let url = API_BASE_URL + `api/robots/${robot.id}`;
     return this.http.put<Robot>(url, robot);
   };
+
+  saveRobot(robot: Robot) {
+    let url = API_BASE_URL + `api/robots`;
+    return this.http.post<Robot>(url, robot);
+  }
 }

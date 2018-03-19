@@ -51,6 +51,19 @@
     <robot-detail [robot]="robot"></robot-detail>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <div class="row justify-content-between">
+      <div class="col" *ngIf="admin">
+        <button class="btn btn-danger" (click)="deleteRobot()">Delete</button>
+      </div>
+      <div class="col" *ngIf="admin">
+        <button class="btn btn-warning" (click)="updateRobot()">Update</button>
+      </div>
+      <div class="col" *ngIf="!admin">
+        <button class="btn btn-primary" [disabled]="robot.quantity == 0">Buy Now</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+      </div>
+    </div>
   </div>
 </ng-template>

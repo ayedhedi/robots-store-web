@@ -13,6 +13,7 @@ import {Page} from "../../shared/domain/page";
 export class HomeComponent implements OnInit {
   robots$: Robot[];
   page$: Page;
+  admin: boolean;
   pageNum: number = 0;
   pageSize: number = 3;
 
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.robots$ = [];
     this.nextPage();
+    this.admin = this.authenticationService.getCurrentUser() &&
+      this.authenticationService.getCurrentUser().admin;
   }
 
   nextPage() {
@@ -35,6 +38,14 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  action($event, robot: Robot) {
+    switch ($event) {
+      case 0:
+        //remove the robot from the list
+            this.robots$ = this.robots$.filter(r => r !== robot);
+    }
+  }
+
   signout(){
     this.authenticationService.logout();
     this.router.navigate(['login']);
@@ -45,6 +56,10 @@ export class HomeComponent implements OnInit {
       this.pageNum++;
       this.nextPage();
     }
+  }
+
+  goDashboard(){
+    this.router.navigate(['dashboard'])
   }
 
 }

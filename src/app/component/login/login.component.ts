@@ -35,11 +35,15 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                   let token = data.headers.get('Authorization');
+                  let roles = data.headers.get('Roles').split(' ');
+
                   if (token){
                     let user:User = {
                       username: this.model.username,
-                      token: token
+                      token: token,
+                      admin: roles.indexOf("ROLE_ADMIN") >= 0
                     };
+                    this.authenticationService.setUser(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.router.navigate([this.returnUrl]);
                   }else {

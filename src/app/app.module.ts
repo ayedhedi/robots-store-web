@@ -16,6 +16,9 @@ import { LoginComponent } from "./component/login/login.component";
 import { HomeComponent } from "./component/home/home.component";
 import { RobotComponent } from './component/robot/robot.component';
 import { RobotDetailComponent } from './component/robot-detail/robot-detail.component';
+import { RobotUpdateComponent } from './component/robot-update/robot-update.component';
+import { ToolsService} from "./shared/service/tools.service";
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { RobotDetailComponent } from './component/robot-detail/robot-detail.comp
     LoginComponent,
     HomeComponent,
     RobotComponent,
-    RobotDetailComponent
+    RobotDetailComponent,
+    RobotUpdateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ import { RobotDetailComponent } from './component/robot-detail/robot-detail.comp
     ApiService,
     AlertService,
     AuthenticationService,
+    ToolsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

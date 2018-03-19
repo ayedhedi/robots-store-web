@@ -8,11 +8,8 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
+        <li class="nav-item" *ngIf="admin">
+          <a class="nav-link" (click)="goDashboard()">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="signout()">Logout</a>
@@ -24,7 +21,6 @@
 
 <!-- Page Content -->
 <div class="container">
-
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
     <h1 class="display-3">Comming Soon</h1>
@@ -38,7 +34,7 @@
        (scrolled)="onScroll()">
 
     <div class="card-columns">
-      <robot *ngFor="let robot of robots$" [robot]="robot"></robot>
+      <robot *ngFor="let robot of robots$" [robot]="robot" (action)="action($event, robot)"></robot>
     </div>
   </div>
 

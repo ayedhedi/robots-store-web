@@ -18,15 +18,27 @@ export class ApiService {
 
   getAllRobots() {
     let url = API_BASE_URL + 'api/robots';
-
     return this.http.get<Robot[]>(url)
       .map(data => _.values(data));
   }
 
+  getOneRobot(id: number) {
+    let url = API_BASE_URL + `api/robots/${id}`;
+    return this.http.get<Robot>(url);
+  }
+
   getPageRobot(page: number, size: number){
     let url = API_BASE_URL + `api/robots/pageable?page=${page}&size=${size}`;
-
     return this.http.get<Page>(url);
   }
 
+  deleteRobot(id: number){
+    let url = API_BASE_URL + `api/robots/${id}`;
+    return this.http.delete(url);
+  }
+
+  updateRobot(robot: Robot) {
+    let url = API_BASE_URL + `api/robots/${robot.id}`;
+    return this.http.put<Robot>(url, robot);
+  };
 }
